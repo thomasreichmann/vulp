@@ -1,0 +1,30 @@
+{
+	"name": "discord-bot-template",
+	"version": "1.0.0",
+	"description": "Templete para criacao de bots para o discord",
+	"main": "index.js",
+	"scripts": {
+		"start": "ts-node index.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/thomasreichmann/discord-bot-template.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/thomasreichmann/discord-bot-template/issues"
+	},
+	"homepage": "https://github.com/thomasreichmann/discord-bot-template#readme",
+	"dependencies": {
+		"@discordjs/opus": "^0.3.3",
+		"discord.js": "^12.5.3",
+		"dotenv": "^8.2.0",
+		"enmap": "^5.8.4",
+		"ts-node": "^9.1.1",
+		"typescript": "^4.2.4"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.41"
+	}
+}
