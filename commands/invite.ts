@@ -10,6 +10,7 @@ class Invite implements Command {
 	aliases = ['i'];
 	description = 'Mostra o link de invite do bot';
 	usage = 'invite';
+	hideHelp = true;
 
 	async exec(message: Message, args: string[]) {
 		let client = ClientController.client;

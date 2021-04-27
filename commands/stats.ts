@@ -9,6 +9,7 @@ class Stats implements Command {
 	aliases = ['s'];
 	description = 'Mostra a quantidade de guildas presentes no bot';
 	usage = 'stats';
+	hideHelp = true;
 
 	exec(message: Message, args: string[]) {
 		let client = ClientController.client;

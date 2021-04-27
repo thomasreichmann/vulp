@@ -10,6 +10,7 @@ class Reload implements Command {
 	description = 'Recarrega os comandos do bot';
 	usage = 'reload';
 	hideHelp = true;
+	permission = 8;
 
 	async exec(message: Message, args: string[]) {
 		message.delete();

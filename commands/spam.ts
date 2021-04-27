@@ -7,6 +7,8 @@ class Spam implements Command {
 	aliases = [];
 	description = 'Sai e entra repetidamente de um canal de voz.';
 	usage = 'spam [n]';
+	permission = 8;
+	hideHelp = true;
 
 	async exec(message: Message, args: string[]) {
 		let limit = 50;

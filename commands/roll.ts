@@ -9,6 +9,7 @@ class Roll implements Command {
 	aliases = [];
 	description = 'Roda um numero de 1 a 100';
 	usage = 'roll [max]';
+	hideHelp = true;
 
 	exec(message: Message, args: string[]) {
 		let max = parseInt(args[0] ?? 100);

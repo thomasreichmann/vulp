@@ -7,6 +7,7 @@ class Ping implements Command {
 	aliases = ['p'];
 	description = 'Mostra a latencia entre o bot e o discord';
 	usage = 'ping';
+	hideHelp = true;
 
 	exec(message: Message, args: string[]) {
 		let delay = parseInt(args[0] ?? 0);

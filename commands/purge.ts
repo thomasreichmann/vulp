@@ -9,6 +9,7 @@ class Purge implements Command {
 	aliases = ['p'];
 	description = 'Deleta mensagens';
 	usage = 'purge [n]';
+	hideHelp = true;
 
 	exec(message: Message, args: string[]) {
 		let n = Number(args[0]);
