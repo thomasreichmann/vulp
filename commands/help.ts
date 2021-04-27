@@ -18,7 +18,7 @@ class Help implements Command {
 		if (!args.length) {
 			// Caso o comando tenha hideHelp, nao mostramos ele no help
 			let c = commands
-				.filter(command => !command.hideHelp)
+				.filter(command => message.member?.hasPermission(8) || !command.hideHelp)
 				.map(command => `\`${command.name}\``)
 				.join(', ');
 			let embed = new Discord.MessageEmbed()
