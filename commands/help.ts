@@ -1,8 +1,7 @@
 import { Message } from 'discord.js';
-import ClientController from '../controllers/ClientController';
 import CommandController, { chatCommand, Command } from '../controllers/CommandController';
-import ConfigController from '../controllers/ConfigController';
 import Discord from 'discord.js';
+import ConfigService from '../services/ConfigService';
 
 @chatCommand()
 class Help implements Command {
@@ -12,7 +11,7 @@ class Help implements Command {
 	usage = 'help';
 
 	async exec(message: Message, args: string[]) {
-		let prefix = ConfigController.prefix;
+		let config = await ConfigService.getConfig(message.guild!.id);
 		let commands = CommandController.commands;
 
 		if (!args.length) {
@@ -23,7 +22,7 @@ class Help implements Command {
 				.join(', ');
 			let embed = new Discord.MessageEmbed()
 				.addField('Aqui esta uma lista dos meus comandos:', c)
-				.setFooter(`Mande '${prefix}help [comando]' para ver um comando especifico`);
+				.setFooter(`Mande '${config.prefix}help [comando]' para ver um comando especifico`);
 
 			return message.channel.send(embed);
 		}
@@ -40,7 +39,7 @@ class Help implements Command {
 
 		if (command.aliases) data.push(`**Apelidos:** \`${command.aliases.join(', ')}\``);
 		if (command.description) data.push(`**Descricao:** \`${command.description}\``);
-		if (command.usage) data.push(`**Uso:** \`${prefix}${command.usage}\``);
+		if (command.usage) data.push(`**Uso:** \`${config.prefix}${command.usage}\``);
 
 		data.push(`**Cooldown:** \`${command.cooldown || 3} segundo(s)\``);
 

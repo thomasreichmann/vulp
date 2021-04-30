@@ -1,6 +1,4 @@
 import { Connection, ConnectionOptions, createConnection } from 'typeorm';
-import Config from '../controllers/ConfigController';
-import { Live } from '../models/Live';
 
 export default class DatabaseService {
 	static config: ConnectionOptions = {
@@ -18,4 +16,8 @@ export default class DatabaseService {
 	// Declared in index.ts, we can assume it exists. I think?
 	// TODO: consider doing this is a way that is more relaiable, maybe with the getter!
 	static connection: Connection;
+
+	static async getConnection(): Promise<Connection> {
+		return DatabaseService.connection ?? (await createConnection(DatabaseService.config));
+	}
 }

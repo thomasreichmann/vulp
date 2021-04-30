@@ -1,21 +1,22 @@
 import { Message } from 'discord.js';
 import CommandController from '../controllers/CommandController';
-import Config from '../controllers/ConfigController';
 import EventController, { discordEvent, DiscordEvent } from '../controllers/EventController';
+import ConfigService from '../services/ConfigService';
 
 @discordEvent()
 class MessageEvent implements DiscordEvent {
 	name = 'message';
 
-	exec(message: Message) {
+	async exec(message: Message) {
+		// TODO: if the bot is mentioned with @ it should handle the message as a command
 		if (message.guild == null) return;
 		if (message.author.bot) return;
 
-		let prefix = Config.prefix;
+		let config = await ConfigService.getConfig(message.guild.id);
 
-		if (!message.content.startsWith(prefix) || message.author.bot) return;
+		if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-		const args = message.content.slice(prefix.length).trim().split(/ +/g);
+		const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 		const command = args.shift()?.toLowerCase();
 
 		const cmd = CommandController.get(command);
