@@ -3,17 +3,25 @@ if (process.env.NODE_ENV != 'production') {
 	console.log('Dev mode');
 }
 
+// typeorm side effects
+import 'reflect-metadata';
+
 import Discord from 'discord.js';
 import EventController from './controllers/EventController';
 
 import fs from 'fs/promises';
 import ClientController from './controllers/ClientController';
+import { createConnection } from 'typeorm';
+import DatabaseService from './services/DatabaseService';
 
 ClientController.client = new Discord.Client();
 
 let client = ClientController.client;
 
 (async () => {
+	console.log(DatabaseService.config.entities);
+	DatabaseService.connection = await createConnection(DatabaseService.config);
+
 	// Loading all command and effect files so that decorators get executed
 	await loadSideEffects();
 
