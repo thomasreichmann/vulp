@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Config extends BaseEntity {
-	@PrimaryGeneratedColumn()
-	id: number;
+	@PrimaryColumn()
+	guildId: string;
 
 	@Column('varchar', { default: ',' })
 	prefix: string;
