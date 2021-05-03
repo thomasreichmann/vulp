@@ -14,6 +14,7 @@ class Purge implements Command {
 	async exec(message: Message, args: string[]) {
 		let n = Number(args[0]);
 		if (!n) return message.channel.send('Defina um numero de mensagens para serem deletadas');
+		if (n > 99) n = 99;
 
 		let channel = message.channel as Discord.TextChannel;
 		channel.bulkDelete(n + 1);
