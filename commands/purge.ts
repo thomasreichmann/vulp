@@ -10,6 +10,7 @@ class Purge implements Command {
 	description = 'Deleta mensagens';
 	usage = 'purge [n]';
 	hideHelp = true;
+	permission = 8;
 
 	async exec(message: Message, args: string[]) {
 		let n = Number(args[0]);

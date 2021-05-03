@@ -11,6 +11,7 @@ class Invite implements Command {
 	description = 'Mostra o link de invite do bot';
 	usage = 'invite';
 	hideHelp = true;
+	permission = 8;
 
 	async exec(message: Message, args: string[]) {
 		let config = await ConfigService.getConfig(message.guild!.id);
