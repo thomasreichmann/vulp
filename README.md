@@ -1,5 +1,10 @@
 ### Documentacao desatualizada!
 
+Things to add to new readme:
+
+-   Database needs to be set to charset utf8mb4 explanation [here](https://stackoverflow.com/questions/6115612/how-to-convert-an-entire-mysql-database-characterset-and-collation-to-utf-8)
+-
+
 # Info
 
 Esse repo tem como intuito:
