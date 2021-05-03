@@ -12,6 +12,9 @@ export class Config extends BaseEntity {
 	color: string;
 
 	@Column()
+	currentEvent: string;
+
+	@Column()
 	helpChannelId: string;
 
 	@Column()
