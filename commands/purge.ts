@@ -16,6 +16,6 @@ class Purge implements Command {
 		if (!n) return message.channel.send('Defina um numero de mensagens para serem deletadas');
 
 		let channel = message.channel as Discord.TextChannel;
-		channel.bulkDelete(n);
+		channel.bulkDelete(n + 1);
 	}
 }
