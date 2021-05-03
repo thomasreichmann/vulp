@@ -19,7 +19,6 @@ ClientController.client = new Discord.Client();
 let client = ClientController.client;
 
 (async () => {
-	console.log(DatabaseService.config.entities);
 	DatabaseService.connection = await createConnection(DatabaseService.config);
 
 	// Loading all command and effect files so that decorators get executed
