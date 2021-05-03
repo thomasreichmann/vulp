@@ -12,31 +12,30 @@ class SetHelpChannel implements Command {
 	permission = 8;
 
 	async exec(message: Message, args: string[]) {
-		throw `TESTE DE ERRO123`;
-		// /**
-		//  * Even through we are deleting the message, the object still holds all of it's info
-		//  * it seems idiotic and that its going to generate errors but I assure you,
-		//  * its fine.
-		//  *  */
-		// await message.delete();
-		// let role = message.mentions.roles.first();
+		/**
+		 * Even through we are deleting the message, the object still holds all of it's info
+		 * it seems idiotic and that its going to generate errors but I assure you,
+		 * its fine.
+		 *  */
+		await message.delete();
+		let channel = message.mentions.channels.first();
 
-		// try {
-		// 	// Get the config from the config service
-		// 	let config = await ConfigService.getConfig(message.guild!.id);
+		try {
+			// Get the config from the config service
+			let config = await ConfigService.getConfig(message.guild!.id);
 
-		// 	// If there is no role in the message, simply return the current role in the configuration and stop exec
-		// 	let currRole = message.guild!.roles.cache.find(a => a.id === config.helperRoleId);
-		// 	if (!role) return (await message.reply(`Role atual de helper: ${currRole?.name}`)).delete({ timeout: 3500 });
+			// If there is no channel in the message, simply return the current channel in the configuration and stop exec
+			let currChannel = message.guild!.channels.cache.find(a => a.id === config.helpChannelId);
+			if (!channel) return (await message.reply(`Canal de ajuda atual: <#${currChannel?.id}>`)).delete({ timeout: 3500 });
 
-		// 	// Alter the helper role to the one we just got and save the config
-		// 	config.helperRoleId = role.id;
-		// 	await config.save();
+			// Alter the help channel to the one we just got and save the config
+			config.helpChannelId = channel.id;
+			await config.save();
 
-		// 	// Send confirmation message that gets self-destructed
-		// 	(await message.channel.send(`Role \`${role.name}\` definida para ajuda`)).delete({ timeout: 2500 });
-		// } catch (err) {
-		// 	throw err;
-		// }
+			// Send confirmation message that gets self-destructed
+			(await message.channel.send(`Canal <#${channel.id}> definido para ajuda`)).delete({ timeout: 2500 });
+		} catch (err) {
+			throw err;
+		}
 	}
 }
