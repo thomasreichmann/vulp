@@ -4,7 +4,7 @@ export default class CommandController {
 	static commands: Command[] = [];
 
 	static get(commandName: string | undefined): Command | undefined {
-		return CommandController.commands.find(a => a.name === commandName);
+		return CommandController.commands.find(a => a.name === commandName || a.aliases.find(b => b === commandName));
 	}
 }
 
