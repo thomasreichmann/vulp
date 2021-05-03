@@ -8,7 +8,7 @@ class Agora implements Command {
 	description = 'Mostro se está acontecendo algum evento no CLL (Agora).';
 	usage = 'agora';
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let reply = 'Agora estamos na inauguração do servidor  :heart_eyes:';
 
 		message.channel.send(reply);

@@ -30,6 +30,11 @@ class MessageEvent implements DiscordEvent {
 
 		if (cmd.guilds && cmd.guilds.find(id => id === message.guild?.id)) return;
 
-		cmd.exec(message, args);
+		try {
+			await cmd.exec(message, args);
+		} catch (err) {
+			let info = `**${message.member.displayName}:${message.member.id} | ${cmd.name}**\n\`${err}\``;
+			message.channel.send(`Erro ao executar o comando contate um administrador, extra info:\n${info}`);
+		}
 	}
 }

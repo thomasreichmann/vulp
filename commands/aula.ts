@@ -8,7 +8,7 @@ class Aula implements Command {
 	description = 'Te recomendo uma aula do CLL (Especial pra você)';
 	usage = 'aula';
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let reply = 'Essa é uma das minhas favoritas! :sweat_smile:\nhttps://www.clliberdade.com/introducao-a-lideranca';
 
 		message.channel.send(reply);

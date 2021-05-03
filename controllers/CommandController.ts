@@ -9,7 +9,7 @@ export default class CommandController {
 }
 
 export interface Command {
-	exec(message: Message, args: string[]): void;
+	exec(message: Message, args: string[]): Promise<any>;
 
 	name: string;
 	description: string;

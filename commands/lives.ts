@@ -8,7 +8,7 @@ class Lives implements Command {
 	description = 'Mostro as próximas Lives do CLL.';
 	usage = 'lives';
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let reply =
 			'As próximas Lives serão:\n:fire: Segunda 19:30 - Liderança Jovem - Com Fênix da Justiça\n:fire: Quarta 19h- Empreendedorismo Feminino - Com Caroline Silva\n:fire: Quinta 19:30 - Como ter a atitude de um líder - Com Flávio Lettieri';
 

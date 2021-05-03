@@ -8,7 +8,7 @@ class Ajuda implements Command {
 	description = 'Chamo alguém da equipe pra te ajudar! (Use com sabedoria)';
 	usage = 'ajuda';
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let reply =
 			':cold_sweat:   Já estou chamando a equipe pra te ajudar! se possível, fique online na nossa sala "Ajuda / Suporte"';
 

@@ -8,7 +8,7 @@ class Vulp implements Command {
 	description = 'Mostra a lista de comandos simplificada da Vulp';
 	usage = 'vulp';
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let reply = `
 :fox: Oi! Sou a Vulp, Guardiã oficial do CLL! Como posso te ajudar?
 Essa é minha lista de comandos (Tenha paciência, ainda estou aprendendo :smiling_face_with_3_hearts:)

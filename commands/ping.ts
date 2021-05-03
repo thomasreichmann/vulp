@@ -9,7 +9,7 @@ class Ping implements Command {
 	usage = 'ping';
 	hideHelp = true;
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let delay = parseInt(args[0] ?? 0);
 		let beforeTime = message.createdTimestamp;
 

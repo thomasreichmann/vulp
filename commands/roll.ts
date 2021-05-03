@@ -11,7 +11,7 @@ class Roll implements Command {
 	usage = 'roll [max]';
 	hideHelp = true;
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let max = parseInt(args[0] ?? 100);
 
 		message.reply(`${Math.floor(Math.random() * max)}!`);

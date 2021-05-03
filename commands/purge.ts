@@ -11,7 +11,7 @@ class Purge implements Command {
 	usage = 'purge [n]';
 	hideHelp = true;
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let n = Number(args[0]);
 		if (!n) return message.channel.send('Defina um numero de mensagens para serem deletadas');
 

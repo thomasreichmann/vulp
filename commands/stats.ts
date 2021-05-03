@@ -11,7 +11,7 @@ class Stats implements Command {
 	usage = 'stats';
 	hideHelp = true;
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let client = ClientController.client;
 
 		let users = 0;

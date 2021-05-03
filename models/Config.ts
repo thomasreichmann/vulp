@@ -14,8 +14,8 @@ export class Config extends BaseEntity {
 	@Column()
 	helpChannelId: string;
 
-	@Column('simple-array')
-	helperIds: string[];
+	@Column()
+	helperRoleId: string;
 
 	@Column('simple-array')
 	welcomeMessageTemplate: string[];

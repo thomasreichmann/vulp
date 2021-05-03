@@ -8,7 +8,7 @@ class Eventos implements Command {
 	description = 'Mostra a programacao de eventos do cll.';
 	usage = 'eventos';
 
-	exec(message: Message, args: string[]) {
+	async exec(message: Message, args: string[]) {
 		let embed = new Discord.MessageEmbed()
 			.setDescription(`Essa é a programação de Abril! :blue_heart::orange_heart:`)
 			.setImage(
