@@ -19,6 +19,7 @@ export default class DatabaseService {
 	static connection: Connection;
 
 	static async getConnection(): Promise<Connection> {
+		console.log(__dirname + '\\..\\models\\*{.ts,.js}');
 		return DatabaseService.connection ?? (await createConnection(DatabaseService.config));
 	}
 }
