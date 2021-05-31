@@ -60,7 +60,7 @@ class Agora implements Command {
 
 				for (let event of config.events) {
 					if (event.charAt(0) === dayOfWeek) {
-						config.events.splice(parseInt(event.charAt(0)));
+						config.events.splice(parseInt(event.charAt(0)), 1);
 						config.save();
 						return message.channel.send(`Evento: \`${event}\`\nFoi removido do sistema`);
 					}
