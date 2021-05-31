@@ -11,8 +11,8 @@ export class Config extends BaseEntity {
 	@Column('varchar', { default: '87148C' })
 	color: string;
 
-	@Column()
-	currentEvent: string;
+	@Column('simple-array')
+	events: string[];
 
 	@Column()
 	helpChannelId: string;
@@ -28,4 +28,13 @@ export class Config extends BaseEntity {
 
 	@Column('simple-array')
 	classes: string[];
+
+	@Column()
+	lives: string;
+}
+
+export interface CurrentEvent {
+	content: string;
+	dayOfWeek: number;
+	time: string;
 }
