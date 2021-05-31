@@ -8,7 +8,7 @@ export default class DatabaseService {
 		username: process.env.DATABASE_USERNAME,
 		password: process.env.DATABASE_PASSWORD,
 		database: process.env.DATABASE_BASE,
-		entities: [__dirname + '\\..\\models\\*{.ts,.js}'],
+		entities: [__dirname + '/../models/*{.ts,.js}'],
 		charset: 'utf8mb4',
 		synchronize: true,
 		logging: false,
