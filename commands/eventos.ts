@@ -1,5 +1,6 @@
 import Discord, { Message } from 'discord.js';
 import { chatCommand, Command } from '../controllers/CommandController';
+import ConfigService from '../services/ConfigService';
 
 @chatCommand()
 class Eventos implements Command {
@@ -9,12 +10,26 @@ class Eventos implements Command {
 	usage = 'eventos';
 
 	async exec(message: Message, args: string[]) {
-		let embed = new Discord.MessageEmbed()
-			.setDescription(`Essa é a programação de Abril! :blue_heart::orange_heart:`)
-			.setImage(
-				`https://static.wixstatic.com/media/52cb94_2dbb9a6dcc784c3f89665909f4c598e2~mv2.png/v1/fill/w_1091,h_683,al_c,q_95/Calendario%20CLL%20Abril_Social%20Media%20Art%201-.webp`
-			);
+		let config = await ConfigService.getConfig(message.guild!.id);
 
-		message.channel.send(embed);
+		if (args[0] && message.member?.hasPermission(8)) {
+			if (args[0] === 'set') {
+				// Remove the first element (argument)
+				args.shift();
+
+				config.eventsUrl = args.join(' ');
+				await config.save();
+
+				message.channel.send('Imagem do comando "eventos" atualizada com sucesso');
+			}
+		} else {
+			let url = config.eventsUrl;
+
+			let embed = new Discord.MessageEmbed()
+				.setDescription(`Essa é a programação de Abril! :blue_heart::orange_heart:`)
+				.setImage(url);
+
+			message.channel.send(embed);
+		}
 	}
 }

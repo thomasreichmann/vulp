@@ -30,6 +30,9 @@ export class Config extends BaseEntity {
 	classes: string[];
 
 	@Column()
+	eventsUrl: string;
+
+	@Column()
 	lives: string;
 }
 
