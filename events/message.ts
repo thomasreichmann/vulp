@@ -32,7 +32,7 @@ class MessageEvent implements DiscordEvent {
 
 		try {
 			await cmd.exec(message, args);
-		} catch (err) {
+		} catch (err: any) {
 			let info = `**${message.member.displayName}:${message.member.id} | ${cmd.name}**\n\`${err.stack}\``;
 			await message.channel.send(`Erro ao executar o comando contate um administrador, extra info:\n${info}`);
 		}
